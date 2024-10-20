@@ -1,1 +1,55 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Tag Manager Example</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T8B88HBS');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+    <h1>GitHub Page</h1>
+
+<script>   
+  function getQueryParameter(name) {  
+    const urlParams = new URLSearchParams(window.location.search);  
+    return urlParams.get(name);  
+  }  
+  
+  // Get the values of key1 and key2  
+  const customerid = getQueryParameter('key1');  
+  const customeremail = getQueryParameter('key2');  
+  
+  // 加载外部脚本并执行identify函数  
+(function(a, b, c, d, e, f, g) {  
+    e['ire_o'] = c;  
+    e[c] = e[c] || function() { (e[c].a = e[c].a || []).push(arguments) };  
+    f = d.createElement(b);  
+    g = d.getElementsByTagName(b)[0];  
+    f.async = 1;  
+    f.src = a;  
+    g.parentNode.insertBefore(f, g);  
+})('https://utt.impactcdn.com/A2788006-de3d-4011-a57c-c4737e79de0365535.js', 'script', 'ire', document, window);  
+  
+// 当外部脚本加载并准备好后，调用identify函数（注意：这里假设ire函数是异步加载的，因此直接调用可能不安全）  
+// 一种更安全的方法是监听ire脚本的加载完成，但这通常涉及到更复杂的设置。  
+// 由于我们不知道ire脚本何时完全加载和可用，下面的调用可能需要在确保ire可用后进行。  
+// 为了简化，这里直接调用，但请注意在实际部署中可能需要调整。  
+window.ire && window.ire('identify', { customerid: customerid, customeremail: customeremail });  
+  
+  // Display the values in the page  
+    const displayDiv = document.createElement('div');  
+    displayDiv.innerHTML = `<p>customerid: ${customerid}</p><p>customeremail: ${customeremail}</p>`;  
+    document.body.appendChild(displayDiv);  
+    
+</script>
+
+  
+</body>
+</html>
